@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %} Blog Categories {% endblock %}
+
+{% load blog_extras %}
+
+{% block content %}
+    <h1>
+        Blog Categories
+    </h1>
+
+    <hr>
+
+    {% for category in categories_menu %}
+        <div class="d-flex">
+            <a class="btn btn-outline-primary w-25 mt-2 mb-2 rounded-2 text-capitalize" href="{% url 'category' category|slugify %}">
+                {{ category }}
+            </a>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %} Edit User Profile {% endblock %}
+
+{% load blog_extras %}
+
+{% load static %}
+
+{% block content %}
+   
+    {% if user.is_authenticated %}
+        {% if user.id == profile.user.id %}
+            <h1>Edit User Profile</h1>
+            <br><br>
+            <div class="row">
+                <div class="col d-flex gap-5">
+                    {% if user.profile.profile_pic %}
+                        <img class="rounded-circle" src="{{ user.profile.profile_pic.url }}" alt="Profile Picture" width="175" height="175">
+                    {% else %}
+                        <div class="h5">
+                            No Profile Picture.
+                        </div>
+                    {% endif %}
+        
+                    {% if user.profile.bio %}
+                        <div class="row">
+                            <div class="row">
+                                <div class="h5">
+                                    My Bio:
+                                    <hr>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p align="justify">
+                                    {{ user.profile.bio|convert_markdown|safe|slice:"1000" }}
+                                </p>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="h5">
+                            No Profile Bio.
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <br><br>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.media}}
+                {{form.as_p}}
+                <button class="btn btn-success" action="submit">Update</button>
+            </form>
+        {% else %}
+            <h1>Oops...</h1>
+            <h3>Looks like you are not allowed here!</h3>
+            <br>
+        {% endif %}
+    {% else %}
+        <h1>Oops...</h1>
+        <h3>Looks like you are not logged in. Please log in to add a post.</h3>
+        <br>
+        <a href="{% url 'home' %}" class="btn btn-primary">Go Back</a>
+        <a href="{% url 'register' %}" class="btn btn-outline-primary">Register</a>
+        <a href="{% url 'login' %}" class="btn btn-outline-primary">Login</a>
+    {% endif %}
+
+{% endblock %}
