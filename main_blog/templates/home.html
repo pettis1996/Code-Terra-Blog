@@ -5,32 +5,9 @@
 {% load static %}
 
 {% block content %}
-    {% if user.is_authenticated %}
-        <div class="d-flex">
-            <div class="me-auto">
-                <div class="h2">
-                    Welcome <strong class="text-color-purple text-uppercase">{{ user.username }}</strong>,
-                    <br><br>
-                </div>
-                <div class="h4">
-                    Hope you are having a wonderful day!
-                    <br><br>
-                </div>
-            </div>
-            <div class="h4">
-                You have <div class="badge text-bg-dark">0</div> notifications.
-                <br><br>
-            </div>
-        </div>
-    {% else %}
-        <h1> Welcome to CodeTerra Coding Blog!</h1>
-        <h6>Login or Register for an account to unlock more features!</h6>
-        <br><br>
-    {% endif %}
-
     <div class="row gap-3 mb-5">
         <div class="col">
-            <div class="card bg-light border-dark border-opacity-50 rounded-0">
+            <div class="card shadow bg-light border-dark border-opacity-50 rounded-0">
                 <div class="card-header border-dark border-opacity-50 bg-dark rounded-0 text-light">
                     <div class="h4">
                         <!-- ★ Featured Posts ★ -->
@@ -68,12 +45,12 @@
                                     </div>
                                     {% if user.is_superuser %}
                                         <div class="ms-auto align-self-center">
-                                            <a href="{% url 'admin_update_post' post.pk %}" class="text-decoration-none text-white">
+                                            <a href="{% url 'admin_update_post' post.pk %}" class="text-decoration-none text-dark">
                                                 <small>
                                                     [ Edit Post ]
                                                 </small>
                                             </a>
-                                            <a href="{% url 'delete_post' post.pk %}" class="text-decoration-none text-white">
+                                            <a href="{% url 'delete_post' post.pk %}" class="text-decoration-none text-dark">
                                                 <small>
                                                     [ Delete Post ]
                                                 </small>
@@ -97,7 +74,7 @@
                 </div>
             </div>
             <br>
-            <div class="card bg-light border-dark border-opacity-50 rounded-0">
+            <div class="card shadow bg-light border-dark border-opacity-50 rounded-0">
                 <div class="card-header bg-dark rounded-0 text-light border-bottom-2 border-dark border-opacity-25">
                     <div class="h4">
                         <!-- ▸ All Posts ◂ -->
@@ -135,12 +112,12 @@
                                     </div>
                                     {% if user.is_superuser %}
                                         <div class="ms-auto align-self-center">
-                                            <a href="{% url 'admin_update_post' post.pk %}" class="text-decoration-none text-white">
+                                            <a href="{% url 'admin_update_post' post.pk %}" class="text-decoration-none text-dark">
                                                 <small>
                                                     [ Edit Post ]
                                                 </small>
                                             </a>
-                                            <a href="{% url 'delete_post' post.pk %}" class="text-decoration-none text-white">
+                                            <a href="{% url 'delete_post' post.pk %}" class="text-decoration-none text-dark">
                                                 <small>
                                                     [ Delete Post ]
                                                 </small>
@@ -165,7 +142,71 @@
             </div>
         </div>
         <div class="col-lg-3">
-            <div class="card bg-light border-dark rounded-0">
+            {% if user.is_authenticated %}
+                <div class="card rounded-0 shadow mb-3 text-center fs-5">
+                    <div class="row g-0">
+                        <div class="col-md-12 d-flex align-items-center justify-content-center p-lg-3 p-md-4 p-sm-5">
+                            <div class="container">
+                                <a href="{% url 'user_profile' user.profile.pk %}" class="row d-flex justify-content-center">
+                                    {% if user.profile.profile_pic %}
+                                        <img src="{{ user.profile.profile_pic.url }}" class="shadow img-fluid rounded-circle p-2" alt="User Profile Pic" style="width: 150px; height: 150px;">
+                                    {% else %}
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                                        </svg>
+                                    {% endif %}
+                                </a>
+                                <br>
+                                <div class="row">
+                                    <p class="card-title rounded-1 text-bg-dark">Welcome back,</p>
+                                    <a href="{% url 'user_profile' user.profile.pk %}" class="card-text rounded-1 text-decoration-none text-capitalize text-bg-primary-2">{{ user.first_name }} {{ user.last_name }}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="card-body">
+                                <br>
+                                <p class="card-text d-flex flex-wrap gap-4 gap-sm-3 p-1 justify-content-sm-around justify-content-md-around justify-content-around justify-content-xl-around">
+                                    <button type="button" class="btn btn-light shadow rounded-3 position-relative">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-envelope" viewBox="0 0 18 18">
+                                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                                        </svg>
+                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                            99+
+                                            <span class="visually-hidden">new messages</span>
+                                        </span>
+                                    </button>
+                                    <a class="btn btn-light shadow rounded-3" href="{% url 'edit_user_profile' user.profile.pk %}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
+                                        </svg>
+                                    </a>
+                                    <a class="btn btn-light shadow rounded-3" href="{% url 'edit_profile' %}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-gear" viewBox="0 0 18 18">
+                                            <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+                                            <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+                                        </svg>
+                                    </a>
+                                    <a class="btn btn-light shadow rounded-3" href="{% url 'logout' %}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 18 18">
+                                            <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                                            <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                                        </svg>
+                                    </a>
+                                </p>
+                                <br>
+                                <p class="card-text">
+                                    <small class="text-muted">Last Login:</small>
+                                    <br>
+                                    <small class="text-muted">{{ user.last_login }}</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="card shadow bg-light border-dark rounded-0">
                 <div class="card-header rounded-0 bg-dark p-3 text-light d-flex border-bottom-2 border-dark">
                     <div class="h4">
                         Blog Categories
