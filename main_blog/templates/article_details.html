@@ -2,6 +2,8 @@
 
 {% block title %} {{ post.title_tag }} {% endblock %}
 
+{% load static %}
+
 {% load blog_extras %}
 
 {% block content %}
@@ -16,7 +18,7 @@
 
             <br>
 
-            <div class="h2 pe-4 ps-4 pt-4 position-absolute top-0">
+            <div class="h2 pe-4 ps-4 pt-4 text-white position-absolute top-0">
                 {{ post.title }}
             </div>
 
@@ -60,7 +62,7 @@
             {% else %}
                 <form action="{% url 'like_post' post.pk %}" method="post">
                     {% csrf_token %}
-                    <button type="submit", name="post_id", value="{{ post.id }}", class="btn btn-outline-primary rounded-3 p-2 position-relative">
+                    <button type="submit", name="post_id", value="{{ post.id }}", class="btn btn-outline-primary-dark rounded-3 p-2 position-relative">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="18" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                         </svg>
@@ -117,7 +119,7 @@
             </div>
             <br>
 
-            <a class="btn btn-outline-primary w-25" href="{% url 'user_profile' post.author.profile.id %}">
+            <a class="btn btn-outline-primary-dark w-25" href="{% url 'user_profile' post.author.profile.id %}">
                 Go to Profile
             </a>
 
@@ -150,7 +152,7 @@
             {% if post.author.profile.bio %}
                 <small>
                     <b class="h6"><u>More About The Author</u></b> <br><br>
-                    {{ post.author.profile.bio }}
+                    {{ post.author.profile.bio|convert_markdown|safe }}
                 </small>
             {% endif %}
         </div>
