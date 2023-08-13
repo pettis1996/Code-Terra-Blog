@@ -34,13 +34,11 @@ class EditProfileForm(UserChangeForm):
     email = forms.EmailField(widget = forms.EmailInput(attrs={'class': 'form-control'}))
     first_name = forms.CharField(max_length=150, widget = forms.TextInput(attrs={'class': 'form-control'}))
     last_name = forms.CharField(max_length=150, widget = forms.TextInput(attrs={'class': 'form-control'}))
-    username = forms.CharField(max_length=20, widget = forms.TextInput(attrs={'class': 'form-control', "disabled": ""}))
-    last_login = forms.CharField(max_length=50, widget = forms.DateTimeInput(attrs={'class': 'form-control', "disabled": ""}))
     is_active = forms.CharField(max_length=20, widget = forms.CheckboxInput(attrs={'class': 'form-check'}))
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'email', 'username', 'last_login', 'is_active')
+        fields = ('first_name', 'last_name', 'email', 'is_active')
 
     def __init__(self, *args, **kwargs):
         super(EditProfileForm, self).__init__(*args, **kwargs)
