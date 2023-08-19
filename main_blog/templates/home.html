@@ -143,11 +143,11 @@
         </div>
         <div class="col-lg-3">
             {% if user.is_authenticated %}
-                <div class="card rounded-0 shadow mb-3 text-center fs-5">
+                <div class="card rounded-0 shadow mb-3 bg-transparent text-center fs-5">
                     <div class="row g-0">
                         <div class="col-md-12 d-flex align-items-center justify-content-center p-lg-3 p-md-4 p-sm-5">
                             <div class="container">
-                                <a href="{% url 'user_profile' user.profile.pk %}" class="row d-flex justify-content-center text-decoration-none text-dark">
+                                <a href="{% url 'user_profile' user.profile.pk %}" class="row d-flex justify-content-center text-decoration-none text-dark mt-2">
                                     {% if user.profile.profile_pic %}
                                         <img src="{{ user.profile.profile_pic.url }}" class="shadow img-fluid rounded-circle p-2" alt="User Profile Pic" style="width: 150px; height: 150px;">
                                     {% else %}
@@ -158,9 +158,9 @@
                                     {% endif %}
                                 </a>
                                 <br>
-                                <div class="row">
-                                    <p class="card-title rounded-1 text-bg-dark">Welcome back,</p>
-                                    <a href="{% url 'user_profile' user.profile.pk %}" class="card-text rounded-1 text-decoration-none text-capitalize text-bg-primary-2">{{ user.first_name }} {{ user.last_name }}</a>
+                                <div class="row d-flex justify-content-center">
+                                    <p class="card-title rounded-3 text-bg-light mb-3">Welcome back!</p>
+                                    <a href="{% url 'user_profile' user.profile.pk %}" class="card-text rounded-3 text-decoration-none text-capitalize text-bg-primary-2 fs-6 p-1 w-50">{{ user.first_name }} {{ user.last_name }}</a>
                                 </div>
                             </div>
                         </div>
