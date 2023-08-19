@@ -162,13 +162,13 @@
     <hr>
 
     <div class="container d-flex gap-3">
-        <a href="{% url 'home' %}" class="btn btn-light rounded-3">Go Back</a>
+        <a href="{% url 'home' %}" class="btn btn-secondary rounded-3">Go Back</a>
         {% if user.is_superuser %}
-            <a href="{% url 'admin_update_post' post.pk %}" class="btn btn-outline-primary rounded-3 text-white ms-auto">Edit Post</a>
-            <a href="{% url 'delete_post' post.pk %}" class="btn btn-outline-primary rounded-3">Delete Post</a>
+            <a href="{% url 'admin_update_post' post.pk %}" class="btn btn-outline-dark rounded-3 ms-auto">Edit Post</a>
+            <a href="{% url 'delete_post' post.pk %}" class="btn btn-outline-dark rounded-3">Delete Post</a>
         {% elif user.id == post.author.id %}
-            <a href="{% url 'update_post' post.pk %}" class="btn btn-outline-primary rounded-3 text-white ms-auto">Edit Post</a>
-            <a href="{% url 'delete_post' post.pk %}" class="btn btn-outline-primary rounded-3">Delete Post</a>
+            <a href="{% url 'update_post' post.pk %}" class="btn btn-outline-dark rounded-3 ms-auto">Edit Post</a>
+            <a href="{% url 'delete_post' post.pk %}" class="btn btn-outline-dark rounded-3">Delete Post</a>
         {% endif %}
     </div>
     {% endblock %}

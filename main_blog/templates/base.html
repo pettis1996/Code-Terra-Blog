@@ -38,24 +38,24 @@
               {% if user.is_authenticated %}
                 {% if user.is_superuser %}
                   <li class="nav-item">
-                    <a href="{% url 'admin_dashboard' %}" class="btn btn-outline-dark">
+                    <a href="{% url 'admin_dashboard' %}" class="btn btn-outline-dark rounded-0">
                       Admin Area
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="btn btn-outline-dark">
+                    <a href="{% url 'add_category' %}" class="btn btn-outline-dark rounded-0">
                       Add Category
                     </a>
                   </li>
                 {% endif %}
                 <li class="nav-item">
-                  <a class="btn btn-outline-dark" href="#">
+                  <a class="btn btn-outline-dark rounded-0" href="{% url 'add_post' %}">
                     Create Post
                   </a>
                 </li>
                 {% if cat_menu %}
                   <li class="nav-item dropdown">
-                    <a class="dropdown-toggle btn btn-outline-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="dropdown-toggle btn btn-outline-dark rounded-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Categories
                     </a>
                     <ul class="dropdown-menu">
@@ -68,10 +68,11 @@
                   </li>
                 {% else %}
                   <li class="nav-item">
-                    <a class="btn btn-outline-dark" href="{% url 'categories_menu' %}">Categories</a>
+                    <a class="btn btn-outline-dark rounded-0" href="{% url 'categories_menu' %}">Categories</a>
                   </li>
                 {% endif %}
-                <a class="btn btn-outline-dark rounded-3" href="{% url 'logout' %}">
+                <a class="btn btn-outline-dark rounded-0" href="{% url 'logout' %}">
+                  <strong class="me-2">Logout</strong>
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 17 17">
                       <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
                       <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
@@ -79,12 +80,12 @@
                 </a>
               {% else %}
                 <li class="nav-item">
-                  <a class="btn btn-outline-dark text-decoration-none" href="{% url 'login' %}">
+                  <a class="btn btn-outline-dark text-decoration-none rounded-0" href="{% url 'login' %}">
                     Login
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="btn btn-outline-dark text-decoration-none" href="{% url 'register' %}">
+                  <a class="btn btn-outline-dark text-decoration-none rounded-0" href="{% url 'register' %}">
                     Register
                   </a>
                 </li>
@@ -92,13 +93,14 @@
             </ul>
           </div>
           <div class="row mt-3">
-            <div class="input-group w-25 ms-auto">
-              <button class="btn btn-outline-primary-dark d-flex align-items-center" type="button" id="button-addon1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <div class="input-group w-50 ms-auto">
+              <button class="btn btn-outline-primary-dark d-flex align-items-center rounded-0 me-2" type="button" id="button-addon1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search me-2" viewBox="0 0 16 16">
                   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                 </svg>
+                Search
               </button>
-              <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for posts and users" aria-describedby="button-addon1">
+              <input type="text" class="form-control rounded-0" placeholder="Search for..." aria-label="Search for posts and users" aria-describedby="button-addon1">
             </div>
           </div>
         </div>
@@ -114,17 +116,17 @@
     </div>
 
     <br>
-    <hr class="text-white">
+    <hr class="text-bg-light">
     <br>
 
-    <div class="footer d-flex justify-content-center text-bg-dark">
-      <div class="row p-2 w-75">
+    <div class="footer d-flex justify-content-center text-bg-light">
+      <div class="row p-2">
         <div class="col">
           <div class="h6">
             A quick word about me...
           </div>
           <hr>
-          <p style="font-size: 14px;">
+          <p style="font-size: 14px;" align="justify">
             I am a Computer Science and Engineering student at the University of Ioannina, Greece, following the path of Software and Web Development.
             In my free time I am freelancing as content creator and tester, writing documentation for assigned software.
             Currently, I am attending an Internship program at HF Markets in Cyprus, as a Software Developer and
@@ -136,19 +138,19 @@
             Quick Links
           </div>
           <hr>
-          <a href="{% url 'home' %}" class="text-decoration-none btn btn-outline-primary mt-2 mb-2 w-100">
+          <a href="{% url 'home' %}" class="text-decoration-none btn btn-outline-dark mt-2 mb-2 w-100">
             Home
           </a>
           <br>
-          <a href="{% url 'about_me' %}" class="text-decoration-none btn btn-outline-primary mt-2 mb-2 w-100">
+          <a href="{% url 'about_me' %}" class="text-decoration-none btn btn-outline-dark mt-2 mb-2 w-100">
             About Me
           </a>
           <br>
-          <a href="#" class="text-decoration-none btn btn-outline-primary mt-2 mb-2 w-100">
+          <a href="#" class="text-decoration-none btn btn-outline-dark mt-2 mb-2 w-100">
             Download CV
           </a>
           <br>
-          <a href="#" class="text-decoration-none btn btn-outline-primary mt-2 mb-2 w-100">
+          <a href="#" class="text-decoration-none btn btn-outline-dark mt-2 mb-2 w-100">
             Contact Me
           </a>
         </div>
@@ -191,9 +193,9 @@
       </div>
     </div>
 
-    <hr class="text-bg-dark">
+    <hr class="text-bg-light">
 
-    <div class="rights pb-3 text-center text-bg-dark fw-lighter fs-6">
+    <div class="rights pb-3 text-center text-bg-light fw-lighter fs-6">
       All rights reserved to Paraskevas C. Pettis. @2023
     </div>
 
