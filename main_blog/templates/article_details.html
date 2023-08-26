@@ -96,7 +96,7 @@
     <br>
     
     <div class="p-3">
-        {{ post.body|convert_markdown|safe }}
+        {{ post.body|convert_markdown|safe|slice:"100000" }}
     </div>
 
     <hr>
@@ -152,7 +152,7 @@
             {% if post.author.profile.bio %}
                 <small>
                     <b class="h6"><u>More About The Author</u></b> <br><br>
-                    {{ post.author.profile.bio|convert_markdown|safe }}
+                    {{ post.author.profile.bio|convert_markdown|safe|slice:"10000"  }}
                 </small>
             {% endif %}
         </div>
