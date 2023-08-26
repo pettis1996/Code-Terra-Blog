@@ -6622,6 +6622,10 @@ fieldset:disabled .btn {
   color: #fff !important;
   background-color: #845EC2 !important;
 }
+.text-bg-primary-gradient {
+  color: #fff !important;
+  background: linear-gradient(90deg, rgba(20,0,71,1) 0%, rgba(132,94,194,1) 35%, rgba(194,94,192,1) 100%) !important;
+}
 .text-bg-secondary {
   color: #fff !important;
   background-color: RGBA(108, 117, 125, var(--bs-bg-opacity, 1)) !important;

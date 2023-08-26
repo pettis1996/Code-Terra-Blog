@@ -61,7 +61,7 @@
                                 <div class="card-body d-flex flex-row">
                                     <br>
                                     <div class="body-text me-auto">
-                                        {{ post.body|convert_markdown|safe|slice:"200" }}
+                                        <h5>Read More...</h5>
                                     </div>
                                     <div class="body-image ms-5">
                                         <img src="{{ post.img_url }}" alt="Post Image" width="150PX" height="100px">
@@ -83,7 +83,7 @@
                 </div>
                 <div class="card-body d-flex flex-column gap-3">
                     {% for post in object_list %}
-                        {% if post.status != "featured" and post.approved == "approved" %}
+                        {% if post.approved == "approved" %}
                             <div class="card bg-light border-dark">
                                 <div class="card-header bg-transparent p-3 d-flex border-bottom-2 border-dark">
                                     <div class="post-details">
