@@ -10,19 +10,19 @@
                 <div class="h2">
                     <strong>Paraskevas C. Pettis</strong>
                 </div>
-                <div class="badge text-bg-primary rounded-pill">
+                <div class="badge text-bg-primary-gradient rounded-pill">
                     Student
                 </div>
             
-                <div class="badge text-bg-primary rounded-pill">
+                <div class="badge text-bg-primary-gradient rounded-pill">
                     Full Stack Developer
                 </div>
 
-                <div class="badge text-bg-primary rounded-pill">
+                <div class="badge text-bg-primary-gradient rounded-pill">
                     Software Dev. Intern
                 </div>
             
-                <div class="badge text-bg-primary rounded-pill">
+                <div class="badge text-bg-primary-gradient rounded-pill">
                     Freelancer
                 </div>
             </div>
@@ -51,7 +51,7 @@
                         Find the technologies and programming languages I use below! <br>
                         Use the Button below to download and review my personal CV in pdf format!
                     </p> 
-                    <a class="btn btn-outline-primary rounded-3 mt-auto p-3" href="{% url 'download_file' %}">
+                    <a class="btn btn-outline-dark rounded-3 mt-auto p-3" href="{% url 'download_file' %}">
                         Download My CV
                     </a>        
                 </div>
@@ -119,7 +119,7 @@
             <div class="row align-items-stretch justify-content-center gap-5">
                 {% for skill in skills %}
                     <div class="col d-flex justify-content-center">
-                        <div class="card skills-card" style="width: 16rem;">
+                        <div class="card skills-card text-bg-dark" style="width: 16rem;">
                             <div class="d-flex justify-content-center align-content-center p-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi {{ skill.icon }} card-image-top" viewBox="0 0 16 16">
                                     {% if skill.title == "Frontend" %}
