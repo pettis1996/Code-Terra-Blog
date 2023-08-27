@@ -81,12 +81,12 @@
                                         </div>
                                         {% if user.is_superuser %}
                                             <div class="ms-auto align-self-center">
-                                                <a href="{% url 'admin_update_post' post.pk %}" class="text-decoration-none text-white">
+                                                <a href="{% url 'admin_update_post' post.pk %}" class="text-decoration-none text-dark">
                                                     <small>
                                                         [ Edit Post ]
                                                     </small>
                                                 </a>
-                                                <a href="{% url 'delete_post' post.pk %}" class="text-decoration-none text-white">
+                                                <a href="{% url 'delete_post' post.pk %}" class="text-decoration-none text-dark">
                                                     <small>
                                                         [ Delete Post ]
                                                     </small>
