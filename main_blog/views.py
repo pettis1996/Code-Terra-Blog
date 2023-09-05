@@ -26,6 +26,12 @@ class AdminDashboardView(ListView):
     template_name = 'admin_dashboard.html'
     ordering = ['-post_date', '-id'] 
 
+
+class AdminDashView(ListView):
+    model = Post
+    template_name = 'admin_dash.html'
+    ordering = ['-post_date', '-id']
+
 class ArticleView(DetailView):
     model = Post
     template_name = 'article_details.html'

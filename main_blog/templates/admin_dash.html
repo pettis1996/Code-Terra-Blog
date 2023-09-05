@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load blog_extras %}
+
+{% block content %}
+
+    {% if user.is_superuser %}
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="d-flex">
+                        <div class="h2 me-auto">
+                            Welcome Administrator, 
+                            <br>
+                            <div class="text-capitalize">{{ user.first_name }} {{ user.last_name }}</div>
+                            <br>
+                        </div>
+                        <div class="h4">
+                            <div class="badge text-bg-dark">0</div> Posts Pending Approval 
+                            <br><br>
+                            <div class="badge text-bg-dark">0</div> Posts in the Posts Recycle Bin.
+                            <br><br>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="h1">&lt;Content Here&gt;</div>
+            </div>
+        </div>
+    {% elif user.is_authenticated and not user.is_superuser %}
+        <h1>Welcome to CodeTerra Coding Blog - Admin Dashboard!</h1>
+        <h4>It seems like you don't have access to this page!</h4>
+        <strong>Login with an Admin Account or contact an Admin to continue.</strong>
+        <br><br>
+    {% else %}
+        <h1> Welcome to CodeTerra Coding Blog - Admin Dashboard!</h1>
+        <h6>Login or Register for an account to unlock more features!</h6>
+        <br><br>
+    {% endif %}
+
+    
+{% endblock %}
